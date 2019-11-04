@@ -28,6 +28,15 @@
     
 }
 
+.select{
+    padding-left: 10px;
+}
+
+.glass{
+    padding-left: 10px;
+    margin-left: 10px;
+}
+
 .right{
     
     display: flex;
@@ -43,7 +52,7 @@
 .section{
     background-color: transparent;
     position: relative;
-    bottom: 450px;
+    bottom: 545px;
 }
 
 .image{
