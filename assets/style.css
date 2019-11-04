@@ -18,6 +18,47 @@
     margin-right: 15px;
 }
 
+.box{
+    height: 280px;
+    width: 280px;
+    margin-right: 20px;
+    margin-top: 20px;
+    
+}
+
+.right{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0rem;
+}
+
+.section{
+    background-color: transparent;
+    position: relative;
+    bottom: 450px;
+}
+
+.image{
+    max-width: 100%; 
+    width: auto;
+    max-height: 100%;
+    height: auto;
+   
+}
+
+.box-card{
+    justify-content: center;
+    position: relative;
+    bottom: 400px;
+    width: 50%;
+    background-color: whitesmoke;
+}
+.field{
+    padding-left: 10px;
+}
+
 .navbar-link {
     margin-right: 100px;
 }
@@ -37,10 +78,6 @@
     position: absolute;
     bottom: 0;
 }
-
-
-
-
 
 
 
