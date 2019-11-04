@@ -1,6 +1,9 @@
+
+
 .titleNav {
-    height: 140px;
-    /* background-color: red; */
+    height: 85px;
+    margin-left: 15px;
+    background-color: black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,6 +11,7 @@
 
 .titleLogo {
     font-size: 30px;
+    color: cornflowerblue;
 }
 
 .fa-city {
@@ -54,5 +58,26 @@
 .field{
     padding-left: 10px;
 }
+
+.navbar-link {
+    margin-right: 100px;
+}
+
+.navbar {
+    background-color: black;
+}
+
+.breadcrumb {
+    display: flex;  
+}
+
+.footer {
+    background-color: black;
+    width: 100%;
+    padding: 1.5rem;
+    position: absolute;
+    bottom: 0;
+}
+
 
 
