@@ -8,7 +8,9 @@
     justify-content: center;
     align-items: center;
 }
-
+.marginFix {
+    margin-top: 30px;
+}
 .titleLogo {
     font-size: 30px;
     color: cornflowerblue;
@@ -31,7 +33,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0rem;
+    padding: 0;
+}
+
+.noPadding {
+    padding: 0;
 }
 
 .section{
@@ -75,9 +81,10 @@
     background-color: black;
     width: 100%;
     padding: 1.5rem;
-    position: absolute;
+    position: fixed;
     bottom: 0;
 }
+
 
 
 
