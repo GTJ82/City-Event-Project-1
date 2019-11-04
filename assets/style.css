@@ -1,0 +1,15 @@
+.titleNav {
+    height: 140px;
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.titleLogo {
+    font-size: 30px;
+}
+
+.fa-city {
+    margin-right: 15px;
+}

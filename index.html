@@ -1,39 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>City-Event-Project-1</title>
-</head>
-<body>
-    <script src="http://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-<script>
-    var city = "chicago";
-    $.ajax({
-        url: "https://api.predicthq.com/v1/places?&q=" + city,
-        method: "GET",
-        headers: {
-            "Authorization": "Bearer TV3nvxQ22JQnqlWiIJzMa3wvh5wRBwCwMHUqdueb"
-        }
-    }).then(function (response) {
-        console.log(response);
-        var cityID = response.results[0].id;
-        $.ajax({
-          url: "https://api.predicthq.com/v1/events?place.scope=" + cityID + "&category=sports",
-          method: "GET",
-          headers: {
-            "Authorization": "Bearer TV3nvxQ22JQnqlWiIJzMa3wvh5wRBwCwMHUqdueb"
-          }
-        }).then(function (response) {
-          console.log(response);
-          
-        });
-    });
-    
+<html>
 
-</script>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hello Bulma!</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <link rel="stylesheet" href="./assets/style.css">
+</head>
+
+<body>
 
 
 
@@ -42,6 +19,10 @@
 
 
 <!-- Local and PredictHQ script links -->
+<script src="script.js"></script>
+<script src="http://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- <script src=""></script> -->
 </body>
+
 </html>
