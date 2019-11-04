@@ -8,9 +8,43 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <link rel="stylesheet" href="./assets/style.css">
+    <script src="http://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 </head>
 
 <body class="has-navbar-fixed-top">
+    <script>
+            $.ajax({
+                url: "https://api.predicthq.com/v1/places?&q=seattle",
+                method: "GET",
+                headers: {
+                    "Authorization": "Bearer TV3nvxQ22JQnqlWiIJzMa3wvh5wRBwCwMHUqdueb"
+                }
+            }).then(function (response) {
+                
+                console.log(response);
+                var cityID = response.results[0].id;
+                var categorySelect = $(".select").val();
+                $.ajax({
+                    url: "https://api.predicthq.com/v1/events?place.scope=" + cityID + "&category=sports",
+                    method: "GET",
+                    headers: {
+                        "Authorization": "Bearer TV3nvxQ22JQnqlWiIJzMa3wvh5wRBwCwMHUqdueb"
+                    }
+                }).then(function (response) {
+                    console.log(response);
+                    
+                });
+            });
+        $("#searchBtn").on("click", function(event){
+            // event.preventDefault();
+            // var city = $(".input").val().trim();
+            alert("boo");
+            // searchCities();
+        });
+    </script>
+
+
 
     <nav class="navbar is is-fixed-top" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
@@ -62,7 +96,7 @@
                     <input class="input" type="text" placeholder="Find a repository">
                 </p>
                 <p class="control">
-                    <a class="button is-success">
+                    <a id="searchBtn" class="button is-success">
                         Search
                     </a>
                 </p>
@@ -168,12 +202,6 @@
   
 
   </footer>
-  
-<!-- Local and PredictHQ script links -->
-<script src="script.js"></script>
-<script src="http://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-<!-- <script src=""></script> -->
 
 </body>
 
