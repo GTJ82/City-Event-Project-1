@@ -1,3 +1,4 @@
+var city = $(".input").val();
 $.ajax({
     url: "https://api.predicthq.com/v1/places?&q=" + city,
     method: "GET",
