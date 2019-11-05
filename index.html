@@ -91,8 +91,8 @@
 
                     <section class="section">
                         <div class="container">
-                            <h1 class="title">Event Placeholder</h1>
-                            <h2 class="subtitle"><strong>
+                            <h1 id="city-name" class="title">Event Placeholder</h1>
+                            <h2 id="city-weather" class="subtitle"><strong>
                                     Information about the city that the user selects
                                     can go here.
                                 </strong></h2>
@@ -109,12 +109,12 @@
                             </div>
                             <div class="media-content">
                                 <div class="content">
-                                    <h4 id="event-title">Event Title</h4>
-                                    <p id="location">Venue/Location</p>
+                                    <h4 id="event-title"></h4>
+                                    <p id="location"></p>
                                     <br>
-                                    <p id="start-time">Start Time & Date</p>
+                                    <p id="start-time"></p>
                                     <br>
-                                    <p id="description">Description</p>
+                                    <p id="description"></p>
                                 </div>
 
                             </div>
@@ -169,7 +169,7 @@
   <script>
         $(document).ready(function(){
             $('#search-btn').click(function(){
-            
+                $('#search-bar').val() = $('#city-name');
             
             
             $.ajax({
@@ -190,7 +190,7 @@
                         }
                     }).then(function (response) {
                         
-                        function createCard(response){
+                        function createCard(){
                             $("#event-title").append(titles);
                             $("#start-time").append(time);
                             $("#description").append(description);
@@ -203,12 +203,12 @@
 
 
                         for (var i = 0; i < searchResults.length; i ++){
-                            var newResult = searchResults[i];
+                            var newResult = searchResults[0];
                             var titles = newResult.title; 
                             var time = newResult.start;
                             var description = newResult.description;
-                            var venue =  newResult.entities.name;
-                            
+                            var venue =  newResult.entities[i].formatted_address + "<br>" + newResult.entities[i].name;
+                            createCard();
 
                          }
 
