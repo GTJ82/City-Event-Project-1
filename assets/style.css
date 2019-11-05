@@ -1,7 +1,7 @@
 /* NAV CSS */
 
 .titleNav {
-    height: 85px;
+    /* height: 85px; */
     margin-left: 15px;
     background-color: #152458;
     display: flex;
@@ -41,21 +41,24 @@
 
 /* MAIN SECTIONS CSS */
 
+.site-content {
+    height: 72vh;
+    overflow: hidden;
+}
+
 .background-image {
     background-image: url("https://wallpaperstream.com/wallpapers/full/new-york-city/New-York-City-Background.jpg");
+    background-attachment: fixed;
+
 }
 
 .columns{
     background-color: #D2D6D6  ;
-    height: 100vh;
+    /* height: 100vh; */
 }
 
-.box{
-    height: 280px;
-    width: 280px;
-    margin-right: 20px;
-    margin-top: 20px;
-    
+.search-button{
+    border-radius: 30px;
 }
 
 .select{
@@ -67,8 +70,17 @@
     margin-left: 10px;
 }
 
+.box{
+    height: 280px;
+    width: 280px;
+    margin-right: 20px;
+    margin-top: 20px;
+    
+}
+
+
 .right{
-    height: 100vh;
+    /* height: 100vh; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -81,8 +93,8 @@
 
 .section{
     background-color: transparent;
-    /* position: relative;
-    bottom: 545px; */
+    position: relative;
+    bottom: 170px;
     padding: 0px;
     
 }
@@ -95,12 +107,11 @@
     */
 }
 
-.box-card{
-    /* justify-content: center;
-    position: relative;
-    bottom: 400px;
-    width: 50%; */
+.card{
+    position:relative ;
+    top: 115px;
     background-color: whitesmoke;
+    border-radius: 15px;
 } 
 .field{
     padding-left: 10px;
@@ -108,8 +119,13 @@
 
 /* FOOTER CSS */
 
+footer {
+    height:20vh;
+}
+
 .footer {
     background-color: #152458;
+
     display: block;
     width: 100%;
     padding: 0;
