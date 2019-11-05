@@ -108,7 +108,7 @@
                                 </figure>
                             </div>
                             <div class="media-content">
-                                <div class="content">
+                                <div id="event-div" class="content">
                                     <h4 id="event-title"></h4>
                                     <p id="location"></p>
                                     <br>
@@ -190,32 +190,25 @@
                     }).then(function (response) {
                         
                         function createCard(){
-                            $("#event-title").append(title);
-                            $("#start-time").append(time);
-                            $("#description").append(description);
-                            $("#venue").append(venue);
+                            eventDiv.append(title);
+                            eventDiv.append(time);
+                            eventDiv.append(description);
+                            eventDiv.append(venue);
+                            $(".content").prepend(eventDiv);
                         }
 
                         console.log(response);
                         var searchResults = response.results;
 
-                        for (var i = 0; i < searchResults.length; i ++){
+                        for(var i = 0; i < searchResults.length; i ++){
+                            var eventDiv = $("#event-div");
                             var newResult = searchResults[0];
                             var title = newResult.title; 
                             var time = newResult.start;
                             var description = newResult.description;
-                            var venue =  newResult.entities[i].formatted_address;
+                            var venue =  newResult.entities[0].name;
                             createCard();
-
-                            var newResult = searchResults[1];
-                            var title = newResult.title; 
-                            var time = newResult.start;
-                            var description = newResult.description;
-                            var venue =  newResult.entities[i].formatted_address;
-                            createCard();
-
-
-                         }
+                        }
 
 
                         
