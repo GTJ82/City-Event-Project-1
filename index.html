@@ -10,41 +10,10 @@
     <link rel="stylesheet" href="./assets/style.css">
     <script src="http://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="script.js"></script>    
 </head>
 
 <body class="has-navbar-fixed-top">
-    <script>
-            $.ajax({
-                url: "https://api.predicthq.com/v1/places?&q=seattle",
-                method: "GET",
-                headers: {
-                    "Authorization": "Bearer TV3nvxQ22JQnqlWiIJzMa3wvh5wRBwCwMHUqdueb"
-                }
-            }).then(function (response) {
-                
-                console.log(response);
-                var cityID = response.results[0].id;
-                var categorySelect = $(".select").val();
-                $.ajax({
-                    url: "https://api.predicthq.com/v1/events?place.scope=" + cityID + "&category=sports",
-                    method: "GET",
-                    headers: {
-                        "Authorization": "Bearer TV3nvxQ22JQnqlWiIJzMa3wvh5wRBwCwMHUqdueb"
-                    }
-                }).then(function (response) {
-                    console.log(response);
-                    
-                });
-            });
-        $("#searchBtn").on("click", function(event){
-            // event.preventDefault();
-            // var city = $(".input").val().trim();
-            alert("boo");
-            // searchCities();
-        });
-    </script>
-
-
 
     <nav class="navbar is is-fixed-top" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
@@ -93,10 +62,10 @@
         <div class="column is-one-quarter has-background-grey is-mobile">
             <div class="field is-grouped is-centered">
                 <p class="control is-expanded">
-                    <input class="input" type="text" placeholder="Find a repository">
+                    <input id="search-bar" class="input" type="text" placeholder="Find a repository">
                 </p>
                 <p class="control">
-                    <a id="searchBtn" class="button is-success">
+                    <a id="search-btn" class="button is-success">
                         Search
                     </a>
                 </p>
@@ -105,9 +74,9 @@
             <div class="control is-success">
                 <div class="select">
                     <select>
-                        <option>Sports</option>
-                        <option>Concerts</option>
-                        <option>Festivals</option>
+                        <option value="sports">Sports</option>
+                        <option value="concerts">Concerts</option>
+                        <option value="festivals">Festivals</option>
                     </select>
                 </div>
             </div>
@@ -140,17 +109,12 @@
                             </div>
                             <div class="media-content">
                                 <div class="content">
-                                    <p>
-                                        <strong>City Placeholder</strong> <small></small> <small>extra info?</small>
-                                        <br>
-                                        <br>
-                                        <strong>Weather INFO</strong>
-                                        <br>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit
-                                        amet
-                                        massa
-                                        fringilla egestas. Nullam condimentum luctus turpis.
-                                    </p>
+                                    <h4 id="event-title">Event Title</h4>
+                                    <p id="location">Venue/Location</p>
+                                    <br>
+                                    <p id="start-time">Start Time & Date</p>
+                                    <br>
+                                    <p id="description">Description</p>
                                 </div>
 
                             </div>
@@ -201,6 +165,61 @@
   
 
   </footer>
+  
+  <script>
+        $(document).ready(function(){
+            $('#search-btn').click(function(){
+            
+            
+            
+            $.ajax({
+                url: "https://api.predicthq.com/v1/places?&q=" + $('#search-bar').val() ,
+                method: "GET",
+                headers: {
+                    "Authorization": "Bearer ZCp-pKAM3FPo7RGmIGKTvj82xVv9zGkfJ2drwwU6"
+                }
+            }).then(function (response) {
+                
+                    console.log(response);
+                    var cityID = response.results[0].id;
+                    $.ajax({
+                        url: "https://api.predicthq.com/v1/events?place.scope=" + cityID + "&category=" + $('select').val() ,
+                        method: "GET",
+                        headers: {
+                            "Authorization": "Bearer ZCp-pKAM3FPo7RGmIGKTvj82xVv9zGkfJ2drwwU6"
+                        }
+                    }).then(function (response) {
+                        
+                        function createCard(response){
+                            $("#event-title").append(titles);
+                            $("#start-time").append(time);
+                            $("#description").append(description);
+                            $("#venue").append(venue);
+                        }
+
+
+                        console.log(response);
+                        var searchResults = response.results;
+
+
+                        for (var i = 0; i < searchResults.length; i ++){
+                            var newResult = searchResults[i];
+                            var titles = newResult.title; 
+                            var time = newResult.start;
+                            var description = newResult.description;
+                            var venue =  newResult.entities.name;
+                            
+
+                         }
+
+
+                        
+                    });
+                }); 
+            }); 
+        }); 
+        </script>
+  
 
 </body>
 
