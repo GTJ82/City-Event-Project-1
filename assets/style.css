@@ -1,31 +1,64 @@
-
+/* NAV CSS */
 
 .titleNav {
-    height: 85px;
+    /* height: 85px; */
     margin-left: 15px;
-    background-color: black;
+    background-color: #152458;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
+.navbar-link {
+    margin-right: 100px;
+}
+
+.navbar {
+    background-color: #152458;
+}
+
+.breadcrumb {
+    display: flex; 
+    margin-right: 5%; 
+}
+
 .marginFix {
     margin-top: 30px;
 }
+
 .titleLogo {
     font-size: 30px;
     color: cornflowerblue;
 }
 
-.fa-city {
-    margin-right: 15px;
+#cityEventLogo {
+    margin-left: 5%;
 }
 
-.box{
-    height: 280px;
-    width: 280px;
-    margin-right: 20px;
-    margin-top: 20px;
-    
+.textLink {
+    color: white;
+}
+
+/* MAIN SECTIONS CSS */
+
+.site-content {
+    height: 72vh;
+    overflow: hidden;
+}
+
+.background-image {
+    background-image: url("https://wallpaperstream.com/wallpapers/full/new-york-city/New-York-City-Background.jpg");
+    background-attachment: fixed;
+
+}
+
+.columns{
+    background-color: #D2D6D6  ;
+    /* height: 100vh; */
+}
+
+.search-button{
+    border-radius: 30px;
 }
 
 .select{
@@ -37,8 +70,17 @@
     margin-left: 10px;
 }
 
-.right{
+.box{
+    height: 280px;
+    width: 280px;
+    margin-right: 20px;
+    margin-top: 20px;
     
+}
+
+
+.right{
+    /* height: 100vh; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -52,47 +94,115 @@
 .section{
     background-color: transparent;
     position: relative;
-    bottom: 545px;
+    bottom: 170px;
+    padding: 0px;
+    
 }
 
 .image{
     max-width: 100%; 
     width: auto;
-    max-height: 100%;
+    /* max-height: 100%;
     height: auto;
-   
+    */
 }
 
-.box-card{
-    justify-content: center;
-    position: relative;
-    bottom: 400px;
-    width: 50%;
+.card{
+    position:relative ;
+    top: 115px;
     background-color: whitesmoke;
-}
+    border-radius: 15px;
+} 
 .field{
     padding-left: 10px;
 }
 
-.navbar-link {
-    margin-right: 100px;
-}
+/* FOOTER CSS */
 
-.navbar {
-    background-color: black;
-}
-
-.breadcrumb {
-    display: flex;  
+footer {
+    height:20vh;
 }
 
 .footer {
-    background-color: black;
+    background-color: #152458;
+
+    display: block;
     width: 100%;
-    padding: 1.5rem;
+    padding: 0;
     position: fixed;
     bottom: 0;
 }
+
+.inner-footer {
+    width: 95%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    justify-content: center;
+}
+
+.footer-items {
+    width: 30%;
+    padding: 10px 75px;
+    box-sizing: border-box;
+}
+
+#socialMedia {
+  text-align: center;
+  color: lightgrey;
+}
+
+#letsConnect {
+    text-align: center;
+    color: lightgrey;
+}
+
+
+h1 {
+    padding: 10px 0;
+    font-size: 25px;
+    color: white;
+    text-transform: uppercase;
+    
+}
+
+.footer-items p {
+        color: lightgrey;
+        font-size: 16px;
+        text-align: justify;
+        line-height: 25px;
+    }
+
+h2 {
+        margin: 10px 0;
+        color: white;
+        font-size: 16px;
+        text-transform: uppercase;
+    }   
+
+.border {
+        height: 2px;
+        width: 50%;
+        background: white;
+        margin-left: 26%;
+        margin-bottom: 5%;
+        
+    } 
+
+.fas {
+    margin-right: 5px;
+}
+
+.footer-bottom { 
+        background: #152458;
+        color: white;
+        font-size: 12px;
+        text-align: center;
+        padding-bottom: 5px;
+    }
+
+
 
 
 
