@@ -91,7 +91,7 @@
 
                     <section class="section">
                         <div class="container">
-                            <h1 id="city-name" class="title">Event Placeholder</h1>
+                            <h1 id="city-name" class="title"></h1>
                             <h2 id="city-weather" class="subtitle"><strong>
                                     Information about the city that the user selects
                                     can go here.
@@ -102,11 +102,6 @@
 
                     <div class="box-card level-item">
                         <article class="media">
-                            <div class="media-left">
-                                <figure class="card-image">
-                                    <img src="https://placebear.com/64/64" alt="Image">
-                                </figure>
-                            </div>
                             <div class="media-content">
                                 <div id="event-div" class="content">
                                     <h4 id="event-title"></h4>
@@ -116,7 +111,6 @@
                                     <br>
                                     <p id="description"></p>
                                 </div>
-
                             </div>
                         </article>
                     </div>
@@ -181,8 +175,9 @@
                 
                     console.log(response);
                     var cityID = response.results[0].id;
+                    var city = $('select').val();
                     $.ajax({
-                        url: "https://api.predicthq.com/v1/events?place.scope=" + cityID + "&category=" + $('select').val() ,
+                        url: "https://api.predicthq.com/v1/events?place.scope=" + cityID + "&category=" + city,
                         method: "GET",
                         headers: {
                             "Authorization": "Bearer ZCp-pKAM3FPo7RGmIGKTvj82xVv9zGkfJ2drwwU6"
@@ -190,11 +185,22 @@
                     }).then(function (response) {
                         
                         function createCard(){
-                            eventDiv.append(title);
-                            eventDiv.append(time);
-                            eventDiv.append(description);
-                            eventDiv.append(venue);
-                            $(".content").prepend(eventDiv);
+                            if (title){
+                                eventDiv.append("<h4>" + title + "</h4>");
+                            }
+                            if (time){
+                                eventDiv.append("<p>"+ time + "</p>");
+                            }
+                            if(description){
+                            eventDiv.append("<p>"+ description + "</p>");
+                            }
+                            if(venue){
+                            eventDiv.append("<p>"+ venue + "</p>");
+                            }
+                            $(".content").append(eventDiv);
+                            $("#city-name").append(city).val();
+                            
+
                         }
 
                         console.log(response);
@@ -202,12 +208,20 @@
 
                         for(var i = 0; i < searchResults.length; i ++){
                             var eventDiv = $("#event-div");
-                            var newResult = searchResults[0];
+                            var newResult = searchResults[i];
                             var title = newResult.title; 
                             var time = newResult.start;
                             var description = newResult.description;
                             var venue =  newResult.entities[0].name;
                             createCard();
+                            // if (venue !== 0|| description !== ""|| time !== ""|| title !== "") {
+                            //    createCard();
+                            // } else {
+                            //     continue;
+                            // }
+                            
+
+                            
                         }
 
 
