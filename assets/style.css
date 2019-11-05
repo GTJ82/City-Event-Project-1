@@ -26,13 +26,10 @@
     margin-top: 30px;
 }
 
-.titleLogo {
-    font-size: 30px;
-    color: cornflowerblue;
-}
-
 #cityEventLogo {
-    margin-left: 5%;
+    /* margin-left: 5%; */
+    height: 65px;
+    margin: 10px;
 }
 
 .textLink {
@@ -40,6 +37,10 @@
 }
 
 /* MAIN SECTIONS CSS */
+
+.columns:not(:last-child) {
+    margin-bottom: 0 !important;
+}
 
 .site-content {
     height: 72vh;
@@ -49,12 +50,12 @@
 .background-image {
     background-image: url("https://wallpaperstream.com/wallpapers/full/new-york-city/New-York-City-Background.jpg");
     background-attachment: fixed;
-
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .columns{
     background-color: #D2D6D6  ;
-    /* height: 100vh; */
 }
 
 .search-button{
@@ -78,9 +79,7 @@
     
 }
 
-
 .right{
-    /* height: 100vh; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -94,22 +93,16 @@
 .section{
     background-color: transparent;
     position: relative;
-    bottom: 170px;
     padding: 0px;
-    
 }
 
 .image{
     max-width: 100%; 
     width: auto;
-    /* max-height: 100%;
-    height: auto;
-    */
 }
 
 .card{
     position:relative ;
-    top: 115px;
     background-color: whitesmoke;
     border-radius: 15px;
 } 
@@ -125,12 +118,9 @@ footer {
 
 .footer {
     background-color: #152458;
-
     display: block;
     width: 100%;
-    padding: 0;
-    position: fixed;
-    bottom: 0;
+    padding: 0!important;
 }
 
 .inner-footer {
@@ -161,7 +151,7 @@ footer {
 
 h1 {
     padding: 10px 0;
-    font-size: 25px;
+    font-size: 2rem !important;
     color: white;
     text-transform: uppercase;
     
