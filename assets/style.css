@@ -1,24 +1,45 @@
-
+/* NAV CSS */
 
 .titleNav {
     height: 85px;
     margin-left: 15px;
-    background-color: black;
+    background-color: #152458;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
+.navbar-link {
+    margin-right: 100px;
+}
+
+.navbar {
+    background-color: #152458;
+}
+
+.breadcrumb {
+    display: flex; 
+    margin-right: 5%; 
+}
+
 .marginFix {
     margin-top: 30px;
 }
+
 .titleLogo {
     font-size: 30px;
     color: cornflowerblue;
 }
 
-.fa-city {
-    margin-right: 15px;
+#cityEventLogo {
+    margin-left: 5%;
 }
+
+.textLink {
+    color: white;
+}
+
+/* MAIN SECTIONS CSS */
 
 .box{
     height: 280px;
@@ -74,25 +95,86 @@
     padding-left: 10px;
 }
 
-.navbar-link {
-    margin-right: 100px;
-}
-
-.navbar {
-    background-color: black;
-}
-
-.breadcrumb {
-    display: flex;  
-}
+/* FOOTER CSS */
 
 .footer {
-    background-color: black;
+    background-color: #152458;
+    display: block;
     width: 100%;
-    padding: 1.5rem;
+    padding: 0;
     position: fixed;
     bottom: 0;
 }
+
+.inner-footer {
+    width: 95%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    justify-content: center;
+}
+
+.footer-items {
+    width: 30%;
+    padding: 10px 75px;
+    box-sizing: border-box;
+}
+
+#socialMedia {
+  text-align: center;
+  color: lightgrey;
+}
+
+#letsConnect {
+    text-align: center;
+    color: lightgrey;
+}
+
+h1 {
+    padding: 10px 0;
+    font-size: 25px;
+    color: white;
+    text-transform: uppercase;
+    
+}
+
+.footer-items p {
+        color: lightgrey;
+        font-size: 16px;
+        text-align: justify;
+        line-height: 25px;
+    }
+
+h2 {
+        margin: 10px 0;
+        color: white;
+        font-size: 16px;
+        text-transform: uppercase;
+    }   
+
+.border {
+        height: 2px;
+        width: 50%;
+        background: white;
+        margin-left: 26%;
+        margin-bottom: 5%;
+        
+    } 
+
+.fas {
+    margin-right: 5px;
+}
+
+.footer-bottom { 
+        background: #152458;
+        color: white;
+        font-size: 12px;
+        text-align: center;
+        padding-bottom: 5px;
+    }
+
+
 
 
 
