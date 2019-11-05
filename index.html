@@ -169,7 +169,6 @@
   <script>
         $(document).ready(function(){
             $('#search-btn').click(function(){
-                $('#search-bar').val() = $('#city-name');
             
             
             $.ajax({
@@ -191,24 +190,30 @@
                     }).then(function (response) {
                         
                         function createCard(){
-                            $("#event-title").append(titles);
+                            $("#event-title").append(title);
                             $("#start-time").append(time);
                             $("#description").append(description);
                             $("#venue").append(venue);
                         }
 
-
                         console.log(response);
                         var searchResults = response.results;
 
-
                         for (var i = 0; i < searchResults.length; i ++){
                             var newResult = searchResults[0];
-                            var titles = newResult.title; 
+                            var title = newResult.title; 
                             var time = newResult.start;
                             var description = newResult.description;
-                            var venue =  newResult.entities[i].formatted_address + "<br>" + newResult.entities[i].name;
+                            var venue =  newResult.entities[i].formatted_address;
                             createCard();
+
+                            var newResult = searchResults[1];
+                            var title = newResult.title; 
+                            var time = newResult.start;
+                            var description = newResult.description;
+                            var venue =  newResult.entities[i].formatted_address;
+                            createCard();
+
 
                          }
 
