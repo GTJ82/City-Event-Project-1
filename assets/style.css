@@ -55,15 +55,27 @@
 }
 
 .columns{
-    background-color: #D2D6D6  ;
+    background-color: rgb(183, 185, 189)  ;
 }
+
+.button{
+    filter: drop-shadow(0 0 0.75rem rgb(134, 169, 216) );
+} 
+
+.input{
+    border: none;
+}
+
+
 
 .search-button{
     border-radius: 30px;
+    filter: drop-shadow(0 0 0.75rem rgb(134, 169, 216) );
 }
 
 .select{
     padding-left: 10px;
+    
 }
 
 .glass{
