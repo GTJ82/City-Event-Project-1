@@ -15,10 +15,12 @@ What things you need to install the software
 -GitHub
 -Visual Studio Code
 -Internet
+-API
+-Bulma
 
 ## Screenshot of the display
 
-
+![image](https://user-images.githubusercontent.com/55814090/68307121-bd496200-0078-11ea-9484-6728f832c186.png)
 
 
 ## Table of Contents
@@ -41,6 +43,6 @@ See also the repository specifically for this activity - [GitHub](https://github
 
 * Randall Phillips worked on the javascript part of the application.
 * Josh Eskew and Brad Herbert worked on the front-end design and formatting. 
-* Tamara Golub worked on the ReadMe file.
+* Tamara Golub worked on the ReadMe file and the presentation of the project.
 * This assignment was challenging and fun!!
 
