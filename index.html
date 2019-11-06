@@ -10,8 +10,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <link rel="stylesheet" href="./assets/style.css">
-    <link rel="stylesheet" href="./assets/script.js">
-    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="script.js"></script>    
+    <script src="https://cdn.aerisapi.com/sdk/js/latest/aerisweather.min.js"></script>
+ <link rel="stylesheet" href="https://cdn.aerisapi.com/sdk/js/latest/aerisweather.css">
 </head>
 
 <body class="has-navbar-fixed-top">
@@ -52,28 +55,87 @@
 
 
     <div class="columns is-mobile marginFix site-content">
-        <div class="column is-one-quarter is-mobile">
+        <div id="side-content" class="column is-one-quarter is-mobile">
             <div class="field is-grouped is-centered">
-                <p class="control is-expanded button">
-                    <input class="input" type="text" placeholder="Find a repository">
-                </p>
-                <p class="control">
-                    <a class="button is-success is-focused">
-                        Search<i class="glass em em-mag_right" aria-role="presentation"
-                            aria-label="RIGHT-POINTING MAGNIFYING GLASS"></i>
-                    </a>
+                <p class="control is-expanded">
+                    <h2>City</h2>
+                    <input id="search-bar" class="input" type="text" placeholder="Find a repository">
+                    <div class="control is-success search-button">
+                        <h2>State</h2>
+                        <div class="select">
+                            <select id="city-state">
+                                <option value="AL">Alabama</option>
+                                <option value="AK">Alaska</option>
+                                <option value="AZ">Arizona</option>
+                                <option value="AR">Arkansas</option>
+                                <option value="CA">California</option>
+                                <option value="CO">Colorado</option>
+                                <option value="CT">Connecticut</option>
+                                <option value="DE">Delaware</option>
+                                <option value="DC">District Of Columbia</option>
+                                <option value="FL">Florida</option>
+                                <option value="GA">Georgia</option>
+                                <option value="HI">Hawaii</option>
+                                <option value="ID">Idaho</option>
+                                <option value="IL">Illinois</option>
+                                <option value="IN">Indiana</option>
+                                <option value="IA">Iowa</option>
+                                <option value="KS">Kansas</option>
+                                <option value="KY">Kentucky</option>
+                                <option value="LA">Louisiana</option>
+                                <option value="ME">Maine</option>
+                                <option value="MD">Maryland</option>
+                                <option value="MA">Massachusetts</option>
+                                <option value="MI">Michigan</option>
+                                <option value="MN">Minnesota</option>
+                                <option value="MS">Mississippi</option>
+                                <option value="MO">Missouri</option>
+                                <option value="MT">Montana</option>
+                                <option value="NE">Nebraska</option>
+                                <option value="NV">Nevada</option>
+                                <option value="NH">New Hampshire</option>
+                                <option value="NJ">New Jersey</option>
+                                <option value="NM">New Mexico</option>
+                                <option value="NY">New York</option>
+                                <option value="NC">North Carolina</option>
+                                <option value="ND">North Dakota</option>
+                                <option value="OH">Ohio</option>
+                                <option value="OK">Oklahoma</option>
+                                <option value="OR">Oregon</option>
+                                <option value="PA">Pennsylvania</option>
+                                <option value="RI">Rhode Island</option>
+                                <option value="SC">South Carolina</option>
+                                <option value="SD">South Dakota</option>
+                                <option value="TN">Tennessee</option>
+                                <option value="TX">Texas</option>
+                                <option value="UT">Utah</option>
+                                <option value="VT">Vermont</option>
+                                <option value="VA">Virginia</option>
+                                <option value="WA">Washington</option>
+                                <option value="WV">West Virginia</option>
+                                <option value="WI">Wisconsin</option>
+                                <option value="WY">Wyoming</option>
+                            </select>
+                            <div class="control is-success search-button">
+                                <h2>Category</h2>
+                                <div class="select">
+                                    <select id="category">
+                                        <option value="sports">Sports</option>
+                                        <option value="concerts">Concerts</option>
+                                        <option value="festivals">Festivals</option>
+                                    </select>
+                                </div>
+                            </div>
+                                    <p class="control">
+                                        <a id="search-btn" class="button is-success">
+                                            Search
+                                        </a>
+                                    </p>
+                        </div>
+                    </div>
                 </p>
             </div>
             <br>
-            <div class="control is-success search-button">
-                <div class="select">
-                    <select>
-                        <option>Sports</option>
-                        <option>Concerts</option>
-                        <option>Festivals</option>
-                    </select>
-                </div>
-            </div>
 
         </div>
 
@@ -81,33 +143,20 @@
         <div class="column right is-mobile background-image">
             <section class="section">
                 <div class="container">
-                    <h1 class="title">Event Placeholder</h1>
-                    <h2 class="subtitle"><strong>
-                            Information about the city that the user selects
-                            can go here.
-                        </strong></h2>
+                    <h1 id="city-name" class="title"></h1>
+                    <span id="obs"><strong></strong></span>
+                    
                 </div>
 
 
-                <div class="card">
-                    <div class="card-content">
+                <div  class="card">
+                    <div id="event-div" class="card-content">
                         <div class="media">
                             <div class="media-left">
                                 <figure class="image is-48x48">
                                     <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
                                 </figure>
                             </div>
-                            <div class="media-content">
-                                <p class="title is-4">John Smith</p>
-                                <p class="subtitle is-6">@johnsmith</p>
-                            </div>
-                        </div>
-                        <div class="content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-                            <a href="#">#css</a> <a href="#">#responsive</a>
-                            <br>
-                            <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
                         </div>
                     </div>
                 </div>
@@ -177,18 +226,94 @@
             </div>
         </div>
 
+    </div>
+  
+
+  </footer>
+  
+  <script>
+        $(document).ready(function(){
+            var eventDiv = $("#event-div");
+            eventDiv.empty();
+            
+            $('#search-btn').click(function(){
+
+                var city = $('#search-bar').val();
+                var state = $("#city-state").val();
+                $('#search-bar').empty();
+                $('#city-name').empty();
+                $('#obs').empty();
+                $("#city-name").append(city + "," + state).val();
+                const aeris = new AerisWeather('HEfYwdO02yETMJe9NBZ3T', 'FMCogyv4t0bjMRYDn5pqOeFIorgecFqvxGcl3SP0');
 
 
+                aeris.api().endpoint('observations').place(city + "," + state).get().then((result) => {
+                const data = result.data.ob;
+                document.getElementById('obs').innerHTML = `The current weather is ${data.weatherPrimary.toLowerCase()} and ${data.tempF} degrees.`;
+                });
 
+            $.ajax({
+                url: "https://api.predicthq.com/v1/places?&q=" + $('#search-bar').val() + "," + state ,
+                method: "GET",
+                headers: {
+                    "Authorization": "Bearer ZCp-pKAM3FPo7RGmIGKTvj82xVv9zGkfJ2drwwU6"
+                }
+            }).then(function (response) {
+                    $("#city-name").append(city).val();
+                    
+                    eventDiv.empty();
+                    console.log(response);
+                    var cityID = response.results[0].id;
+                    var city = $('#search-bar').val();
+                    $.ajax({
+                        url: "https://api.predicthq.com/v1/events?place.scope=" + cityID + "&category=" + $('#category').val(),
+                        method: "GET",
+                        headers: {
+                            "Authorization": "Bearer ZCp-pKAM3FPo7RGmIGKTvj82xVv9zGkfJ2drwwU6"
+                        }
+                    }).then(function (response) {
+                        function createCard(){
+                            if (title){
+                                eventDiv.append("<h3><strong>" + title + "</strong></h3>");
+                            }
+                            if (time){
+                                eventDiv.append("<span>"+ time + "</span>");
+                            }
+                            if(description){
+                            eventDiv.append("<p>"+ description + "</p>");
+                            }
+                            if(venue){
+                                eventDiv.append("<p>"+ venue + "</p>");
+                            }
+                            else if(!venue){
+                                eventDiv.append("<p>no venue listed</p>");
+                            }    
+                            $(".content").prepend(eventDiv);
+                            
 
+                        }
 
-    </footer>
+                        console.log(response);
+                        var searchResults = response.results;
 
-    <!-- Local and PredictHQ script links -->
-    <script src="script.js"></script>
-    <script src="http://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <!-- <script src=""></script> -->
+                        for(var i = 0; i < searchResults.length; i ++){
+                            var eventDiv = $("#event-div");
+                            var newResult = searchResults[i];
+                            var title = newResult.title; 
+                            var time = newResult.start;
+                            var description = newResult.description;
+                            var venue = "";
+                            if (newResult.entities[0]){
+                                venue =  newResult.entities[0].name;
+                            }
+                            createCard();
+                        }
+                    });
+                }); 
+            }); 
+        }); 
+        </script>
+  
 
 
 </body>

@@ -36,6 +36,13 @@
     color: white;
 }
 
+#obs {
+    
+    color:black;
+    font-size: large;
+    
+}
+
 /* MAIN SECTIONS CSS */
 
 .columns:not(:last-child) {
@@ -43,8 +50,8 @@
 }
 
 .site-content {
-    height: 72vh;
-    overflow: hidden;
+    min-height: 72vh;
+    /* overflow: hidden; */
 }
 
 .background-image {
@@ -72,9 +79,17 @@
     border-radius: 30px;
     filter: drop-shadow(0 0 0.75rem rgb(134, 169, 216) );
 }
+#search-btn{
+    margin-top: 75px;
+}
+#side-content{
+    justify-content: left;
+}
 
 .select{
     padding-left: 10px;
+    position: relative;
+    right: 10px;
     
 }
 
@@ -117,9 +132,21 @@
     position:relative ;
     background-color: whitesmoke;
     border-radius: 15px;
+    overflow-wrap: break-word;
+    width: 50vw;
+    margin-bottom: 5vh;
+    margin-top: 35px;
 } 
+
 .field{
     padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+
+}
+#city-state{
+ position: relative;
+ 
 }
 
 /* FOOTER CSS */
