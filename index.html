@@ -149,7 +149,7 @@
                 </div>
 
 
-                <div  class="card">
+                <div  class="card is-hidden">
                     <div id="event-div" class="card-content">
                         <div class="media">
                             <div class="media-left">
@@ -237,7 +237,7 @@
             eventDiv.empty();
             
             $('#search-btn').click(function(){
-
+                $(".card").removeClass("is-hidden");
                 var city = $('#search-bar').val();
                 var state = $("#city-state").val();
                 $('#search-bar').empty();
