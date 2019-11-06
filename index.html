@@ -4,7 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hello Bulma!</title>
+
+    <title>City Event</title>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <link rel="stylesheet" href="./assets/style.css">
@@ -20,36 +22,28 @@
     <nav class="navbar is is-fixed-top" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <div class="titleNav is-fixed-bottom">
-                <i class="fas fa-city titleLogo"></i>
-                <p class="titleLogo">City Event</p>
+                <img id="cityEventLogo" src="./assets/Images/CityEventLogo.png" alt="">
             </div>
         </div>
 
         <div class="navbar-end">
             <div class="navbar-item">
                 <ul class="breadcrumb" aria-label="breadcrumbs">
+
                     <li>
-                        <a href="#">
-                            <span class="icon is-small">
-                                <i class="far fa-address-card"></i>
-                            </span>
-                            <span>About Us</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
+                        <a href="https://www.stubhub.com/">
                             <span class="icon is-small">
                                 <i class="fas fa-ticket-alt"></i>
                             </span>
-                            <span>Get Tickets</span>
+                            <span class="textLink">Get Tickets</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="https://www.google.com/maps">
                             <span class="icon is-small">
                                 <i class="far fa-compass"></i>
                             </span>
-                            <span>Find Location</span>
+                            <span class="textLink">Find Location</span>
                         </a>
                     </li>
 
@@ -60,8 +54,8 @@
     </nav>
 
 
-    <div class="columns is-mobile marginFix">
-        <div class="column is-one-quarter has-background-grey is-mobile">
+    <div class="columns is-mobile marginFix site-content">
+        <div class="column is-one-quarter is-mobile">
             <div class="field is-grouped is-centered">
                 <p class="control is-expanded">
                     <input id="search-bar" class="input" type="text" placeholder="Find a repository">
@@ -73,7 +67,7 @@
                 </p>
             </div>
             <br>
-            <div class="control is-success">
+            <div class="control is-success search-button">
                 <div class="select">
                     <select>
                         <option value="sports">Sports</option>
@@ -84,68 +78,91 @@
             </div>
 
         </div>
-        <div class="column has-background-grey-lighter noPadding">
 
 
-            <div class="column right is-mobile">
-                <figure class="image">
-                    <img src="https://wallpaperstream.com/wallpapers/full/new-york-city/New-York-City-Background.jpg">
-
-                    <section class="section">
-                        <div class="container">
-                            <h1 id="city-name" class="title"></h1>
-                            <div id="obs"><strong></strong></div>
-                        </div>
-                    </section>
+        <div class="column right is-mobile background-image">
+            <section class="section">
+                <div class="container">
+                    <h1 id="city-name" class="title"></h1>
+                    <span id="obs"><strong></strong></span>
+                    
+                </div>
 
 
-                    <div class="box-card level-item">
-                        <article class="media">
-                            <div class="media-content">
-                                <div id="event-div" class="content">
-                                    <h1>Upcoming Events in the Area</h1>
-                                </div>
+                <div  class="card">
+                    <div id="event-div" class="card-content">
+                        <div class="media">
+                            <div class="media-left">
+                                <figure class="image is-48x48">
+                                    <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                                </figure>
                             </div>
-                        </article>
+                        </div>
                     </div>
-
-
-                </figure>
-            </div>
+                </div>
+            </section>
 
         </div>
+
+
     </div>
     </section>
 
     <footer>
         <div class="footer">
-            <div class="footerList">
-                <ul>
-                    <li>
-                        <a href="#">
-                            <span class="icon is-small">
-                                <i class="fab fa-twitter-square"></i>
-                            </span>
-                            <span>Twitter</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="icon is-small">
-                                <i class="fab fa-facebook-square"></i>
-                            </span>
-                            <span>Facebook</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="icon is-small">
-                                <i class="fab fa-instagram"></i>
-                            </span>
-                            <span>Instagram</span>
-                        </a>
-                    </li>
-                </ul>
+            <div class="inner-footer">
+                <div id="aboutUs" class="footer-items">
+                    <h1>About Us</h1>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum obcaecati assumenda ratione quidem
+                        quis debitis itaque facilis doloremque.
+                        Ipsam, nam? Sed incidunt, ea commodi nemo id praesentium sunt maiores quod.
+                    </p>
+                </div>
+                <div id="socialMedia" class="footer-items">
+                    <h2>Social Media</h2>
+                    <div class="border"></div>
+                    <ul>
+                        <li>
+                            <a href="https://twitter.com/CityEvent3">
+                                <span class="icon is-small">
+                                    <i class="fab fa-twitter-square"></i>
+                                </span>
+                                <span class="textLink">Twitter</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.facebook.com/">
+                                <span class="icon is-small">
+                                    <i class="fab fa-facebook-square"></i>
+                                </span>
+                                <span class="textLink">Facebook</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/cityevent2019/">
+                                <span class="icon is-small">
+                                    <i class="fab fa-instagram"></i>
+                                </span>
+                                <span class="textLink">Instagram</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div id="letsConnect" class="footer-items">
+                    <h2>Let's Connect</h2>
+                    <div class="border"></div>
+                    <ul>
+                        <li><i class="fas fa-map-pin"></i> 320 E 9th St. Charlotte, NC 28202</li>
+                        <li><i class="fas fa-phone"></i> 704-555-5555</li>
+                        <li><i class="fas fa-envelope-open-text"></i> cityevent2019@gmail.com</li>
+                    </ul>
+
+                </div>
+            </div>
+            <div class="footer-bottom">
+                Copyright &copy; City Event 2019, All rights reserved.
             </div>
         </div>
 
@@ -196,10 +213,10 @@
                     }).then(function (response) {
                         function createCard(){
                             if (title){
-                                eventDiv.append("<h4>" + title + "</h4>");
+                                eventDiv.append("<h3><strong>" + title + "</strong></h3>");
                             }
                             if (time){
-                                eventDiv.append("<p>"+ time + "</p>");
+                                eventDiv.append("<span>"+ time + "</span>");
                             }
                             if(description){
                             eventDiv.append("<p>"+ description + "</p>");
@@ -236,6 +253,7 @@
         }); 
         </script>
   
+
 
 </body>
 

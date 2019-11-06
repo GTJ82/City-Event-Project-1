@@ -1,23 +1,93 @@
-
+/* NAV CSS */
 
 .titleNav {
-    height: 85px;
+    /* height: 85px; */
     margin-left: 15px;
-    background-color: black;
+    background-color: #152458;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
+.navbar-link {
+    margin-right: 100px;
+}
+
+.navbar {
+    background-color: #152458;
+}
+
+.breadcrumb {
+    display: flex; 
+    margin-right: 5%; 
+}
+
 .marginFix {
     margin-top: 30px;
 }
-.titleLogo {
-    font-size: 30px;
-    color: cornflowerblue;
+
+#cityEventLogo {
+    /* margin-left: 5%; */
+    height: 65px;
+    margin: 10px;
 }
 
-.fa-city {
-    margin-right: 15px;
+.textLink {
+    color: white;
+}
+
+#obs {
+    
+    color:black;
+    font-size: large;
+    
+}
+
+/* MAIN SECTIONS CSS */
+
+.columns:not(:last-child) {
+    margin-bottom: 0 !important;
+}
+
+.site-content {
+    min-height: 72vh;
+    /* overflow: hidden; */
+}
+
+.background-image {
+    background-image: url("https://wallpaperstream.com/wallpapers/full/new-york-city/New-York-City-Background.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.columns{
+    background-color: rgb(183, 185, 189)  ;
+}
+
+.button{
+    filter: drop-shadow(0 0 0.75rem rgb(134, 169, 216) );
+} 
+
+.input{
+    border: none;
+}
+
+
+
+.search-button{
+    border-radius: 30px;
+    filter: drop-shadow(0 0 0.75rem rgb(134, 169, 216) );
+}
+
+.select{
+    padding-left: 10px;
+    
+}
+
+.glass{
+    padding-left: 10px;
+    margin-left: 10px;
 }
 
 .box{
@@ -28,17 +98,7 @@
     
 }
 
-.select{
-    padding-left: 10px;
-}
-
-.glass{
-    padding-left: 10px;
-    margin-left: 10px;
-}
-
 .right{
-    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -52,47 +112,111 @@
 .section{
     background-color: transparent;
     position: relative;
-    bottom: 545px;
+    padding: 0px;
 }
 
 .image{
     max-width: 100%; 
     width: auto;
-    max-height: 100%;
-    height: auto;
-   
 }
 
-.box-card{
-    justify-content: center;
-    position: relative;
-    bottom: 400px;
-    width: 50%;
+.card{
+    position:relative ;
     background-color: whitesmoke;
-}
+    border-radius: 15px;
+    overflow-wrap: break-word;
+    width: 50vw;
+    margin-bottom: 5vh;
+    margin-top: 35px;
+} 
+
 .field{
     padding-left: 10px;
 }
 
-.navbar-link {
-    margin-right: 100px;
-}
+/* FOOTER CSS */
 
-.navbar {
-    background-color: black;
-}
-
-.breadcrumb {
-    display: flex;  
+footer {
+    height:20vh;
 }
 
 .footer {
-    background-color: black;
+    background-color: #152458;
+    display: block;
     width: 100%;
-    padding: 1.5rem;
-    position: fixed;
-    bottom: 0;
+    padding: 0!important;
 }
+
+.inner-footer {
+    width: 95%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    justify-content: center;
+}
+
+.footer-items {
+    width: 30%;
+    padding: 10px 75px;
+    box-sizing: border-box;
+}
+
+#socialMedia {
+  text-align: center;
+  color: lightgrey;
+}
+
+#letsConnect {
+    text-align: center;
+    color: lightgrey;
+}
+
+
+h1 {
+    padding: 10px 0;
+    font-size: 2rem !important;
+    color: white;
+    text-transform: uppercase;
+    
+}
+
+.footer-items p {
+        color: lightgrey;
+        font-size: 16px;
+        text-align: justify;
+        line-height: 25px;
+    }
+
+h2 {
+        margin: 10px 0;
+        color: white;
+        font-size: 16px;
+        text-transform: uppercase;
+    }   
+
+.border {
+        height: 2px;
+        width: 50%;
+        background: white;
+        margin-left: 26%;
+        margin-bottom: 5%;
+        
+    } 
+
+.fas {
+    margin-right: 5px;
+}
+
+.footer-bottom { 
+        background: #152458;
+        color: white;
+        font-size: 12px;
+        text-align: center;
+        padding-bottom: 5px;
+    }
+
+
 
 
 
