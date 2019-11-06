@@ -11,6 +11,8 @@
     <script src="http://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="script.js"></script>    
+    <script src="https://cdn.aerisapi.com/sdk/js/latest/aerisweather.min.js"></script>
+ <link rel="stylesheet" href="https://cdn.aerisapi.com/sdk/js/latest/aerisweather.css">
 </head>
 
 <body class="has-navbar-fixed-top">
@@ -92,10 +94,7 @@
                     <section class="section">
                         <div class="container">
                             <h1 id="city-name" class="title"></h1>
-                            <h2 id="city-weather" class="subtitle"><strong>
-                                    Information about the city that the user selects
-                                    can go here.
-                                </strong></h2>
+                            <div id="obs"><strong></strong></div>
                         </div>
                     </section>
 
@@ -104,12 +103,7 @@
                         <article class="media">
                             <div class="media-content">
                                 <div id="event-div" class="content">
-                                    <h4 id="event-title"></h4>
-                                    <p id="location"></p>
-                                    <br>
-                                    <p id="start-time"></p>
-                                    <br>
-                                    <p id="description"></p>
+                                    <h1>Upcoming Events in the Area</h1>
                                 </div>
                             </div>
                         </article>
@@ -162,9 +156,25 @@
   
   <script>
         $(document).ready(function(){
+            var eventDiv = $("#event-div");
+            eventDiv.empty();
+            
             $('#search-btn').click(function(){
-            
-            
+
+                var city = $('#search-bar').val();
+                $('#search-bar').empty();
+                $('#city-name').empty();
+                $('#obs').empty();
+                $("#city-name").append(city).val();
+
+                const aeris = new AerisWeather('HEfYwdO02yETMJe9NBZ3T', 'FMCogyv4t0bjMRYDn5pqOeFIorgecFqvxGcl3SP0');
+
+
+                aeris.api().endpoint('observations').place(city).get().then((result) => {
+                const data = result.data.ob;
+                document.getElementById('obs').innerHTML = `The current weather is ${data.weatherPrimary.toLowerCase()} and ${data.tempF} degrees.`;
+                });
+
             $.ajax({
                 url: "https://api.predicthq.com/v1/places?&q=" + $('#search-bar').val() ,
                 method: "GET",
@@ -172,18 +182,18 @@
                     "Authorization": "Bearer ZCp-pKAM3FPo7RGmIGKTvj82xVv9zGkfJ2drwwU6"
                 }
             }).then(function (response) {
-                
+                    $("#city-name").append(city).val();
+                    eventDiv.empty();
                     console.log(response);
                     var cityID = response.results[0].id;
-                    var city = $('select').val();
+                    var city = $('#search-bar').val();
                     $.ajax({
-                        url: "https://api.predicthq.com/v1/events?place.scope=" + cityID + "&category=" + city,
+                        url: "https://api.predicthq.com/v1/events?place.scope=" + cityID + "&category=" + $('select').val(),
                         method: "GET",
                         headers: {
                             "Authorization": "Bearer ZCp-pKAM3FPo7RGmIGKTvj82xVv9zGkfJ2drwwU6"
                         }
                     }).then(function (response) {
-                        
                         function createCard(){
                             if (title){
                                 eventDiv.append("<h4>" + title + "</h4>");
@@ -195,10 +205,12 @@
                             eventDiv.append("<p>"+ description + "</p>");
                             }
                             if(venue){
-                            eventDiv.append("<p>"+ venue + "</p>");
+                                eventDiv.append("<p>"+ venue + "</p>");
                             }
-                            $(".content").append(eventDiv);
-                            $("#city-name").append(city).val();
+                            else if(!venue){
+                                eventDiv.append("<p>no venue listed</p>");
+                            }    
+                            $(".content").prepend(eventDiv);
                             
 
                         }
@@ -212,22 +224,29 @@
                             var title = newResult.title; 
                             var time = newResult.start;
                             var description = newResult.description;
-                            var venue =  newResult.entities[0].name;
+                            var venue = "";
+                            if (newResult.entities[0]){
+                                venue =  newResult.entities[0].name;
+                            }
                             createCard();
-                            // if (venue !== 0|| description !== ""|| time !== ""|| title !== "") {
-                            //    createCard();
-                            // } else {
-                            //     continue;
-                            // }
-                            
-
-                            
                         }
 
 
                         
                     });
                 }); 
+                //     var accessKey = "HEfYwdO02yETMJe9NBZ3T&";
+                //     var clientSecret = "FMCogyv4t0bjMRYDn5pqOeFIorgecFqvxGcl3SP0";
+                //     var city = $('#search-bar').val();
+                    
+                //  $.ajax ({
+
+                //     URL: "http://api.aerisapi.com/places/observations/" + city + "client_id=" + accessKey + "client_secret=" + clientSecret ,
+                //     method: "GET",
+
+                //  }).then(function(response){
+                //     console.log(response);
+                //  });   
             }); 
         }); 
         </script>
