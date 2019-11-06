@@ -79,9 +79,17 @@
     border-radius: 30px;
     filter: drop-shadow(0 0 0.75rem rgb(134, 169, 216) );
 }
+#search-btn{
+    margin-top: 75px;
+}
+#side-content{
+    justify-content: left;
+}
 
 .select{
     padding-left: 10px;
+    position: relative;
+    right: 10px;
     
 }
 
@@ -132,6 +140,13 @@
 
 .field{
     padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+
+}
+#city-state{
+ position: relative;
+ 
 }
 
 /* FOOTER CSS */
