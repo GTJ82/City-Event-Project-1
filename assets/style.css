@@ -36,6 +36,13 @@
     color: white;
 }
 
+#obs {
+    
+    color:black;
+    font-size: large;
+    
+}
+
 /* MAIN SECTIONS CSS */
 
 .columns:not(:last-child) {
@@ -43,8 +50,8 @@
 }
 
 .site-content {
-    height: 72vh;
-    overflow: hidden;
+    min-height: 72vh;
+    /* overflow: hidden; */
 }
 
 .background-image {
@@ -117,7 +124,12 @@
     position:relative ;
     background-color: whitesmoke;
     border-radius: 15px;
+    overflow-wrap: break-word;
+    width: 50vw;
+    margin-bottom: 5vh;
+    margin-top: 35px;
 } 
+
 .field{
     padding-left: 10px;
 }

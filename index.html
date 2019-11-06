@@ -10,8 +10,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <link rel="stylesheet" href="./assets/style.css">
-    <link rel="stylesheet" href="./assets/script.js">
-    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="script.js"></script>    
+    <script src="https://cdn.aerisapi.com/sdk/js/latest/aerisweather.min.js"></script>
+ <link rel="stylesheet" href="https://cdn.aerisapi.com/sdk/js/latest/aerisweather.css">
 </head>
 
 <body class="has-navbar-fixed-top">
@@ -54,13 +57,12 @@
     <div class="columns is-mobile marginFix site-content">
         <div class="column is-one-quarter is-mobile">
             <div class="field is-grouped is-centered">
-                <!-- <p class="control is-expanded button"> -->
-                    <input class="input" type="text" placeholder="Find a repository">
-                <!-- </p> -->
+                <p class="control is-expanded">
+                    <input id="search-bar" class="input" type="text" placeholder="Find a repository">
+                </p>
                 <p class="control">
-                    <a class="button is-success is-focused">
-                        Search<i class="glass em em-mag_right" aria-role="presentation"
-                            aria-label="RIGHT-POINTING MAGNIFYING GLASS"></i>
+                    <a id="search-btn" class="button is-success">
+                        Search
                     </a>
                 </p>
             </div>
@@ -68,9 +70,9 @@
             <div class="control is-success search-button">
                 <div class="select">
                     <select>
-                        <option>Sports</option>
-                        <option>Concerts</option>
-                        <option>Festivals</option>
+                        <option value="sports">Sports</option>
+                        <option value="concerts">Concerts</option>
+                        <option value="festivals">Festivals</option>
                     </select>
                 </div>
             </div>
@@ -81,33 +83,20 @@
         <div class="column right is-mobile background-image">
             <section class="section">
                 <div class="container">
-                    <h1 class="title">Event Placeholder</h1>
-                    <h2 class="subtitle"><strong>
-                            Information about the city that the user selects
-                            can go here.
-                        </strong></h2>
+                    <h1 id="city-name" class="title"></h1>
+                    <span id="obs"><strong></strong></span>
+                    
                 </div>
 
 
-                <div class="card">
-                    <div class="card-content">
+                <div  class="card">
+                    <div id="event-div" class="card-content">
                         <div class="media">
                             <div class="media-left">
                                 <figure class="image is-48x48">
                                     <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
                                 </figure>
                             </div>
-                            <div class="media-content">
-                                <p class="title is-4">John Smith</p>
-                                <p class="subtitle is-6">@johnsmith</p>
-                            </div>
-                        </div>
-                        <div class="content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-                            <a href="#">#css</a> <a href="#">#responsive</a>
-                            <br>
-                            <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
                         </div>
                     </div>
                 </div>
@@ -177,18 +166,93 @@
             </div>
         </div>
 
+    </div>
+  
+
+  </footer>
+  
+  <script>
+        $(document).ready(function(){
+            var eventDiv = $("#event-div");
+            eventDiv.empty();
+            
+            $('#search-btn').click(function(){
+
+                var city = $('#search-bar').val();
+                $('#search-bar').empty();
+                $('#city-name').empty();
+                $('#obs').empty();
+                $("#city-name").append(city).val();
+
+                const aeris = new AerisWeather('HEfYwdO02yETMJe9NBZ3T', 'FMCogyv4t0bjMRYDn5pqOeFIorgecFqvxGcl3SP0');
 
 
+                aeris.api().endpoint('observations').place(city).get().then((result) => {
+                const data = result.data.ob;
+                document.getElementById('obs').innerHTML = `The current weather is ${data.weatherPrimary.toLowerCase()} and ${data.tempF} degrees.`;
+                });
 
+            $.ajax({
+                url: "https://api.predicthq.com/v1/places?&q=" + $('#search-bar').val() ,
+                method: "GET",
+                headers: {
+                    "Authorization": "Bearer ZCp-pKAM3FPo7RGmIGKTvj82xVv9zGkfJ2drwwU6"
+                }
+            }).then(function (response) {
+                    $("#city-name").append(city).val();
+                    eventDiv.empty();
+                    console.log(response);
+                    var cityID = response.results[0].id;
+                    var city = $('#search-bar').val();
+                    $.ajax({
+                        url: "https://api.predicthq.com/v1/events?place.scope=" + cityID + "&category=" + $('select').val(),
+                        method: "GET",
+                        headers: {
+                            "Authorization": "Bearer ZCp-pKAM3FPo7RGmIGKTvj82xVv9zGkfJ2drwwU6"
+                        }
+                    }).then(function (response) {
+                        function createCard(){
+                            if (title){
+                                eventDiv.append("<h3><strong>" + title + "</strong></h3>");
+                            }
+                            if (time){
+                                eventDiv.append("<span>"+ time + "</span>");
+                            }
+                            if(description){
+                            eventDiv.append("<p>"+ description + "</p>");
+                            }
+                            if(venue){
+                                eventDiv.append("<p>"+ venue + "</p>");
+                            }
+                            else if(!venue){
+                                eventDiv.append("<p>no venue listed</p>");
+                            }    
+                            $(".content").prepend(eventDiv);
+                            
 
+                        }
 
-    </footer>
+                        console.log(response);
+                        var searchResults = response.results;
 
-    <!-- Local and PredictHQ script links -->
-    <script src="script.js"></script>
-    <script src="http://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <!-- <script src=""></script> -->
+                        for(var i = 0; i < searchResults.length; i ++){
+                            var eventDiv = $("#event-div");
+                            var newResult = searchResults[i];
+                            var title = newResult.title; 
+                            var time = newResult.start;
+                            var description = newResult.description;
+                            var venue = "";
+                            if (newResult.entities[0]){
+                                venue =  newResult.entities[0].name;
+                            }
+                            createCard();
+                        }
+                    });
+                }); 
+            }); 
+        }); 
+        </script>
+  
 
 
 </body>
